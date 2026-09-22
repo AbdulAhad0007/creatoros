@@ -51,12 +51,17 @@ export async function signup(formData: FormData) {
     return { error: parsed.error.issues[0].message };
   }
 
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
   const { error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
       data: {
         full_name: parsed.data.name,
+        otp: otp,
+        otp_verified: false,
+        is_first_login: true
       }
     }
   })
@@ -65,8 +70,8 @@ export async function signup(formData: FormData) {
     return { error: error.message || 'Failed to create user' }
   }
 
-  revalidatePath(redirectTo.startsWith('/dashboard') ? '/dashboard' : redirectTo, 'layout')
-  redirect(redirectTo)
+  // Redirect to OTP verification page instead of dashboard
+  redirect('/otp-verify');
 }
 
 export async function logout() {
@@ -74,4 +79,34 @@ export async function logout() {
   await supabase.auth.signOut();
   
   redirect('/login');
+}
+
+export async function verifyOTP(submittedOtp: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { error: 'Not authenticated' };
+  }
+
+  const expectedOtp = user.user_metadata?.otp;
+
+  if (!expectedOtp || submittedOtp !== expectedOtp) {
+    return { error: 'Invalid OTP code' };
+  }
+
+  // Update user metadata to verified
+  const { error } = await supabase.auth.updateUser({
+    data: {
+      otp_verified: true,
+      otp: null // Clear the OTP
+    }
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath('/dashboard', 'layout');
+  redirect('/dashboard');
 }

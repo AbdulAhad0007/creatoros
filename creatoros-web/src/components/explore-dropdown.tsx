@@ -86,7 +86,7 @@ export function ExploreDropdown() {
             Explore
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="w-[600px] p-4 md:w-[700px] lg:w-[800px] grid grid-cols-3 gap-4 glass-card rounded-xl border border-border/50 shadow-2xl">
+            <div className="w-[90vw] md:w-[600px] lg:w-[800px] p-4 grid grid-cols-1 sm:grid-cols-3 gap-4 glass-card rounded-xl border border-border/50 shadow-2xl">
               
               {/* Column 1: Generate */}
               <div className="space-y-3">

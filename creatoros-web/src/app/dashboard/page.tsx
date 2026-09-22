@@ -5,6 +5,11 @@ import { Video, Image as ImageIcon, MessageSquare, FileVideo, BookOpen, Mic, Typ
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: "Dashboard",
+  description: "Manage your AI-generated content, media library, and schedules.",
+};
+
 export default async function DashboardPage() {
   const { data: { user } } = await getCustomUser();
 
@@ -12,7 +17,15 @@ export default async function DashboardPage() {
     return null;
   }
 
+  const isFirstLogin = user.user_metadata?.is_first_login === true;
+  const userName = user.user_metadata?.full_name?.split(' ')[0] || user.email?.split('@')[0] || 'Creator';
+  
   const supabase = await createClient();
+
+  if (isFirstLogin) {
+    // Reset the flag so next time it says Welcome Back
+    supabase.auth.updateUser({ data: { is_first_login: false } }).catch(console.error);
+  }
   const [
     { count: totalContent },
     { count: drafts },
@@ -70,12 +83,12 @@ export default async function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-8 p-4 md:p-8 max-w-[1600px] mx-auto min-h-screen">
+    <div className="space-y-8 p-4 md:p-8 w-full max-w-[1600px] mx-auto min-h-screen">
       {/* Header section with responsive layout */}
       <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-4 glass-card p-6 md:p-8 border-white/5">
         <div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground flex items-center gap-3 drop-shadow-sm">
-            Welcome back 👋
+            {isFirstLogin ? `Welcome ${userName} 🎉` : `Welcome Back ${userName} 👋`}
           </h1>
           <p className="text-base md:text-lg text-muted-foreground mt-2 font-medium">Here is what is happening with your content today.</p>
         </div>

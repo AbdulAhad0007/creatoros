@@ -11,8 +11,29 @@ export async function GET(request: Request) {
   if (code) {
     const supabase = await createClient()
     const { error } = await supabase.auth.exchangeCodeForSession(code)
-    
     if (!error) {
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user) {
+        // Check if user has already verified OTP
+        const otpVerified = user.user_metadata?.otp_verified
+        
+        if (!otpVerified) {
+          // Generate OTP for new Google user or unverified user
+          const otp = Math.floor(100000 + Math.random() * 900000).toString()
+          
+          await supabase.auth.updateUser({
+            data: {
+              otp: otp,
+              otp_verified: false,
+              is_first_login: user.user_metadata?.is_first_login !== false // If not explicitly false, it's true
+            }
+          })
+          
+          return NextResponse.redirect(`${origin}/otp-verify`)
+        }
+      }
+
       return NextResponse.redirect(`${origin}${next}`)
     }
   }

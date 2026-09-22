@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -139,8 +140,8 @@ export function Sidebar({ isCollapsed = false }: { isCollapsed?: boolean }) {
       <aside className={`hidden md:flex flex-col z-40 fixed top-0 left-0 h-screen transition-all duration-300 ease-in-out border-r border-border/50 group overflow-hidden bg-background/60 backdrop-blur-2xl hover:shadow-2xl ${isCollapsed ? 'w-16 hover:w-64' : 'w-64'}`}>
         <div className="flex h-16 items-center flex-shrink-0 px-4 border-b border-border/50 w-64">
           <Link href="/" className="flex items-center gap-3 font-semibold text-primary whitespace-nowrap">
-            <div className="w-8 h-8 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0 text-primary font-bold">C</div>
-            <span className="text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">CreatorOS AI</span>
+            <Image src="/icon.png" alt="CreatorOS AI Logo" width={32} height={32} className="rounded-xl flex-shrink-0" />
+            <span className={`text-xl transition-opacity duration-300 ${isCollapsed ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>CreatorOS AI</span>
           </Link>
         </div>
         
@@ -149,7 +150,7 @@ export function Sidebar({ isCollapsed = false }: { isCollapsed?: boolean }) {
             {sidebarNavItems.map((item, index) => {
               if (item.heading) {
                 return (
-                  <div key={index} className="px-3 py-2 text-[10px] font-bold text-muted-foreground uppercase tracking-wider mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  <div key={index} className={`px-3 py-2 text-[10px] font-bold text-muted-foreground uppercase tracking-wider mt-4 transition-opacity duration-300 whitespace-nowrap ${isCollapsed ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
                     {item.title}
                   </div>
                 );
@@ -167,7 +168,7 @@ export function Sidebar({ isCollapsed = false }: { isCollapsed?: boolean }) {
                   title={item.title}
                 >
                   <div className="flex-shrink-0 flex items-center justify-center w-5">{item.icon}</div>
-                  <span className="whitespace-nowrap font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className={`whitespace-nowrap font-semibold transition-opacity duration-300 ${isCollapsed ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
                     {item.title}
                   </span>
                 </Link>
@@ -185,7 +186,7 @@ export function Sidebar({ isCollapsed = false }: { isCollapsed?: boolean }) {
             <div className="flex-shrink-0 flex items-center justify-center w-5">
               <LogOut className="w-5 h-5 flex-shrink-0" />
             </div>
-            <span className="whitespace-nowrap font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className={`whitespace-nowrap font-semibold transition-opacity duration-300 ${isCollapsed ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
               Sign Out
             </span>
           </a>

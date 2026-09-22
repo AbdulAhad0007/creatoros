@@ -22,14 +22,14 @@ export default function Home() {
         </div>
 
         {/* Dynamic Glowing Orbs for extra ambience */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-pulse pointer-events-none"></div>
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] max-w-[600px] h-[100vw] max-h-[600px] bg-primary/20 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-pulse pointer-events-none"></div>
         
         <div className="container px-4 md:px-6 mx-auto relative z-10 flex flex-col items-center justify-center pt-8">
           
           <div className="flex flex-col items-center text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 max-w-4xl mx-auto">
             <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-sm font-semibold text-primary shadow-[0_0_20px_rgba(99,102,241,0.25)] backdrop-blur-md mb-8 hover:bg-primary/20 transition-colors cursor-pointer">
               <Sparkles className="mr-2 h-4 w-4 animate-pulse" />
-              CreatorOS 2.0 Early Access is Live
+              CreatorOS Early Access is Live
               <ArrowRight className="ml-2 h-4 w-4 opacity-70" />
             </div>
             

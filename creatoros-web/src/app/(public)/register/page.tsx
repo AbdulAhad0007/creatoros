@@ -17,6 +17,9 @@ const registerSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
   password: z.string().min(6, { message: "Password must be at least 6 characters" }),
   confirmPassword: z.string(),
+  terms: z.boolean().refine(val => val === true, {
+    message: "You must agree to the Terms of Service and Privacy Policy"
+  })
 }).refine(data => data.password === data.confirmPassword, {
   message: "Passwords do not match",
   path: ["confirmPassword"],
@@ -48,6 +51,7 @@ function RegisterForm() {
       email: "",
       password: "",
       confirmPassword: "",
+      terms: false,
     },
   })
 
@@ -238,6 +242,28 @@ function RegisterForm() {
                 <p className="text-xs text-destructive mt-1">{form.formState.errors.confirmPassword.message}</p>
               )}
             </div>
+
+            <div className="flex items-start space-x-3 pt-2">
+              <input 
+                type="checkbox" 
+                id="reg-terms" 
+                className="mt-1 flex-shrink-0 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                {...form.register("terms")}
+              />
+              <label htmlFor="reg-terms" className="text-sm text-muted-foreground leading-snug">
+                I agree to the{" "}
+                <Link href="/terms" target="_blank" className="text-primary hover:underline">
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link href="/privacy" target="_blank" className="text-primary hover:underline">
+                  Privacy Policy
+                </Link>.
+              </label>
+            </div>
+            {form.formState.errors.terms && (
+              <p className="text-xs text-destructive mt-1">{form.formState.errors.terms.message}</p>
+            )}
 
             {error && (
               <div className="flex items-center gap-2 p-3 text-sm rounded-lg bg-destructive/10 text-destructive border border-destructive/20">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import { getCustomUser } from "@/lib/auth/session";
@@ -18,6 +19,7 @@ export default async function PublicLayout({
         <div className="container flex h-16 max-w-screen-2xl items-center justify-between mx-auto px-4 md:px-8">
           <div className="flex gap-6 md:gap-8 items-center">
             <Link href="/" className="flex items-center space-x-2 transition-opacity hover:opacity-80">
+              <Image src="/icon.png" alt="CreatorOS AI" width={28} height={28} className="rounded-md" />
               <span className="font-bold text-lg text-foreground tracking-tight">CreatorOS <span className="text-primary font-semibold">AI</span></span>
             </Link>
             <nav className="hidden md:flex gap-6 items-center">
@@ -54,6 +56,7 @@ export default async function PublicLayout({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
             <div className="space-y-4 md:col-span-1">
               <Link href="/" className="flex items-center space-x-2">
+                <Image src="/icon.png" alt="CreatorOS AI" width={32} height={32} className="rounded-lg" />
                 <span className="font-bold text-xl text-foreground tracking-tight">CreatorOS <span className="text-primary font-semibold">AI</span></span>
               </Link>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
@@ -90,17 +93,16 @@ export default async function PublicLayout({
               <ul className="space-y-3">
                 <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
                 <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
+                <li><Link href="/faq" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQs</Link></li>
               </ul>
             </div>
             
             <div className="space-y-4">
               <h4 className="text-sm font-semibold text-foreground">Legal</h4>
               <ul className="space-y-3">
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
-                <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</Link></li>
+                <li><Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
+                <li><Link href="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">Cookie Policy</Link></li>
               </ul>
             </div>
           </div>

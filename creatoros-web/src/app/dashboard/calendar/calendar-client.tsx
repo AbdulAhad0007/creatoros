@@ -81,7 +81,7 @@ export default function CalendarClient({ items }: CalendarClientProps) {
       </div>
 
       <div className="w-full max-w-7xl backdrop-blur-xl bg-background/40 border border-border/50 rounded-3xl p-6 shadow-2xl relative overflow-hidden flex flex-col min-h-[600px]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] md:w-[800px] h-[150vw] md:h-[800px] max-w-[800px] max-h-[800px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
         
         <div className="flex justify-between items-center mb-8 relative z-10">
           <h2 className="text-2xl font-bold">{format(currentDate, 'MMMM yyyy')}</h2>

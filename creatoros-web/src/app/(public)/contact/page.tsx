@@ -36,30 +36,20 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="font-medium text-foreground">Email</p>
-                      <a href="mailto:support@creatoros.ai" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                        support@creatoros.ai
+                      <a href="mailto:support.creatorosai@gmail.com" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                        support.creatorosai@gmail.com
                       </a>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <MessageSquare className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-medium text-foreground">Sales</p>
-                      <a href="mailto:sales@creatoros.ai" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                        sales@creatoros.ai
-                      </a>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
+
                     <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                     <div>
                       <p className="font-medium text-foreground">Office</p>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        123 Creator Way<br />
-                        Suite 400<br />
-                        San Francisco, CA 94105
+                        Ghaziabad, Uttar Pradesh<br />
+                        India
                       </p>
                     </div>
                   </div>
@@ -119,7 +109,6 @@ export default function ContactPage() {
                     >
                       <option value="">Select a topic...</option>
                       <option value="support">Technical Support</option>
-                      <option value="sales">Sales Inquiry</option>
                       <option value="billing">Billing Question</option>
                       <option value="partnership">Partnership</option>
                     </select>

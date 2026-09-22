@@ -110,7 +110,7 @@ export default function AnalyticsClient({ initialData }: AnalyticsClientProps) {
 
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 backdrop-blur-xl bg-background/40 border border-border/50 rounded-3xl p-6 shadow-xl relative overflow-hidden min-h-[400px] flex flex-col">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-32 bg-green-500/10 blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[100vw] md:w-[500px] h-32 bg-green-500/10 blur-3xl pointer-events-none"></div>
           
           <div className="flex justify-between items-center mb-8 relative z-10">
             <h2 className="text-xl font-bold flex items-center gap-2">
