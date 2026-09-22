@@ -1,117 +1,102 @@
-# CreatorOS
+<div align="center">
+  <img src="./creatoros-web/public/icon.png" alt="CreatorOS AI Logo" width="120" height="120" />
+  
+  # CreatorOS AI
+  
+  **The Ultimate Operating System for Digital Creators**
+  
+  [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+  [![Supabase](https://img.shields.io/badge/Supabase-Auth_&_DB-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  
+  *Turn a single idea into scripts, voiceovers, videos, thumbnails, and captions. Publish everywhere — automatically.*
+</div>
 
-CreatorOS is a comprehensive platform designed for creators, featuring a robust end-user application and a powerful administrative console. The project is structured as a monorepo containing two Next.js web applications.
+---
 
-## 🏗️ Project Architecture & Features
+## 🚀 Overview
 
-The project consists of two main applications, each tailored for different user roles and workflows.
+**CreatorOS AI** is a fully automated, AI-driven content generation engine designed to scale your educational content empire. Built for YouTubers, educators, and digital marketers, it eliminates the friction of content creation by generating production-ready media from simple text prompts.
 
-### 1. CreatorOS Web (`/creatoros-web`)
-The primary user-facing application for creators, providing a full suite of tools to manage and generate content.
+### 🌟 Key Features
 
-#### 🌐 Public Pages
-Accessible to all visitors, these pages serve as the landing and marketing front for CreatorOS:
-- **Home**: The main landing page showcasing the platform.
-- **About**: Information about the CreatorOS mission and team.
-- **Features**: Detailed breakdown of the platform's capabilities.
-- **How It Works**: A guide on getting started and using the tools.
-- **Pricing**: Subscription tiers and pricing information.
-- **Contact**: Get in touch with support or sales.
-- **Login / Register**: Secure authentication portals for users.
+- 🧠 **AI Script & Lesson Generator**: Leverage powerful LLMs (Gemini / Ollama) to instantly draft highly structured, engaging educational scripts.
+- 🎙️ **Voice Studio**: Generate ultra-realistic, studio-quality AI voiceovers.
+- 👤 **Avatar Studio (D-ID Integration)**: Transform your scripts and voiceovers into talking-head videos with lifelike AI avatars.
+- 🖼️ **Thumbnail Generator**: Automatically design eye-catching, high-converting YouTube thumbnails.
+- 📝 **Auto-Captions**: Generate accurate captions for accessibility and better audience retention.
+- 🚀 **YouTube Auto-Publish**: Connect your channel and directly schedule or publish your AI-generated videos to YouTube.
+- 🔐 **Secure Authentication**: Passwordless OTP flow backed by EmailJS and Supabase.
 
-#### 📊 Creator Dashboard
-The core workspace for authenticated creators:
-- **Dashboard Home**: Overview of recent activity, quick actions, and metrics.
-- **Analytics**: Detailed performance metrics and insights for creator content.
-- **Media**: Asset management and media library.
-- **Avatar Studio**: Tools for creating and managing custom AI avatars.
-- **Voice Studio**: AI voice generation and voice cloning management.
-- **Thumbnail Generator**: AI-powered tool for generating high-converting video thumbnails.
-- **Lesson Generator**: Course and educational content creation assistant.
-- **Captions**: Auto-caption generation and subtitle editing.
-- **Calendar & Scheduler**: Content planning, scheduling, and calendar views.
-- **Settings**: Account, billing, and workspace preferences.
+---
 
-### 2. CreatorOS Admin (`/creatoros-admin`)
-The administrative console for platform operators to monitor and manage the ecosystem.
+## 💻 Tech Stack
 
-#### 🛡️ Admin Pages & Content
-- **Admin Dashboard**: High-level overview of platform health, user signups, and system status.
-- **Users**: Complete user management, including roles, permissions, and account statuses.
-- **API Management**: Creation, revocation, and management of API keys for integrations.
-- **API Usage**: Analytics and tracking of API request volumes, quotas, and limits.
-- **Jobs**: Monitoring and management of background tasks, queues, and AI processing jobs.
-- **Logs**: System and audit logs for security, debugging, and compliance.
-- **System**: Overall system health checks, environment status, and configuration.
-- **Login / Auth**: Secure authentication portal specifically for administrators.
-- **Unauthorized**: Fallback page for handling missing permissions.
+- **Frontend**: Next.js 14 (App Router), React, Tailwind CSS, Lucide Icons, Recharts
+- **Backend & Database**: Supabase (PostgreSQL, Auth, Storage)
+- **AI Models**: Google Gemini API / Ollama (Local Fallback)
+- **Video/Avatar Generation**: D-ID API
+- **Emails**: EmailJS
+- **Deployment**: Vercel
 
-## 🛠️ Tech Stack
+---
 
-Both applications are built with a modern, high-performance tech stack:
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **UI Library**: [React 19](https://react.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & [Shadcn UI](https://ui.shadcn.com/)
-- **Backend/Auth**: [Supabase](https://supabase.com/) & PostgreSQL
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Forms & Validation**: React Hook Form & Zod
-- **Icons**: Lucide React
+## 🛠️ Quick Start
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v20+ recommended)
-- A Supabase project or local Supabase instance
-- PostgreSQL
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies for both projects:
-
+### 1. Clone the repository
 ```bash
-# Install Web dependencies
-cd creatoros-web
-npm install
+git clone https://github.com/AbdulAhad0007/creatoros.git
+cd creatoros/creatoros-web
+```
 
-# Install Admin dependencies
-cd ../creatoros-admin
+### 2. Configure Environment Variables
+Create a `.env` file in the `creatoros-web` directory and add your keys:
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL="your_supabase_url"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="your_supabase_anon_key"
+
+# Database Connection Strings
+POSTGRES_URL="your_postgres_url"
+
+# AI & APIs
+GEMINI_API_KEY="your_gemini_key"
+D_ID_API_KEY="your_did_key"
+
+# EmailJS Configuration (Auth OTP)
+NEXT_PUBLIC_EMAILJS_SERVICE_ID="your_service_id"
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID="your_template_id"
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY="your_public_key"
+NEXT_PUBLIC_EMAILJS_PRIVATE_KEY="your_private_key"
+```
+*(Note: Keep your `.env` file out of source control. It is explicitly ignored in `.gitignore` to prevent secret leaks!)*
+
+### 3. Install Dependencies
+```bash
 npm install
 ```
 
-### Environment Variables
-
-You will need to set up your `.env.local` files in both the `creatoros-web` and `creatoros-admin` directories. Reference the `.env.example` files provided in each directory.
-
-Key variables usually include:
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `POSTGRES_URL` (for database setup scripts)
-
-### Database Setup
-
-The web application includes database setup scripts. From the `creatoros-web` directory:
+### 4. Run the Development Server
 ```bash
-node setup_db.js
-```
-
-### Running the Development Servers
-
-You can run both applications concurrently in separate terminal windows.
-
-**For CreatorOS Web:**
-```bash
-cd creatoros-web
 npm run dev
 ```
-The web app will be available at [http://localhost:3000](http://localhost:3000) (or the assigned port).
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-**For CreatorOS Admin:**
-```bash
-cd creatoros-admin
-npm run dev
-```
-The admin app will be available at [http://localhost:3001](http://localhost:3001) (or the assigned port).
+---
 
-## 📄 License
-*Specify license here*
+## 📱 Responsiveness & Design
+
+CreatorOS AI features a premium "Glassmorphism" design aesthetic, utilizing blurred backdrops, glowing neon accents, and sleek typography. The entire dashboard and public landing pages are fully responsive, scaling perfectly from 4k desktop monitors down to mobile devices.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Feel free to open an issue or submit a Pull Request if you'd like to help improve CreatorOS.
+
+---
+
+<div align="center">
+  <p>Built with 💙 by creators, for creators.</p>
+</div>
